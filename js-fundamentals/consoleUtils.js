@@ -12,12 +12,22 @@ export const readUserKey = () => {
     })
 }
 
-export async function readUserLine(question) {
+export function clearConsole() {
     rl.clearLine(rl.input, 1); // clear the current line
     console.clear();
+}
+
+// readUserLine function with custom validation function
+export async function readUserLine(question, validate = () => { return { success: true } } ) {
     return new Promise((resolve) => {
         rl.question(question, function (answer) {
-            resolve(answer);
+            const validationResult = validate(answer);
+            if (validationResult.success) {
+                resolve(answer);
+            } else {    
+                console.log(validationResult.error);
+                resolve(readUserLine(question, validate));
+            }
         })
     })
 }

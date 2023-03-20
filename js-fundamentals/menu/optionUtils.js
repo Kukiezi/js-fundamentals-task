@@ -35,7 +35,15 @@ export function createContactsOptionsForPagination() {
     const startIndex = state.page * contactsPerPage;
     const endIndex = startIndex + contactsPerPage;
     const pageContacts = state.filteredContacts.slice(startIndex, endIndex);
-    return pageContacts.map(contact => createOption(contact.name, function (id) { state.currentContactId = startIndex + id; showMenu({ menuName: 'contact' }); }));
+    return pageContacts.map((contact, idx) => createOption(contact.name, openContactMenu(idx + startIndex)));
+}
+
+// cloesure to keep track of the contact id
+function openContactMenu(id) {
+    return function() {
+        state.currentContactId = id;
+        showMenu({ menuName: 'contact' });
+    }
 }
 
 /**

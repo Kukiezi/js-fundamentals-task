@@ -13,9 +13,9 @@ export function createMenu() {
             header: 'Main Menu',
             options: [
                 createOption("Show contacts", function () { state.filteredContacts = [...state.contacts]; showMenu({ menuName: 'contacts', clear: true }) }),
-                createOption("Add contact", addContact()),
-                createOption("Search contact", searchContact()),
-                createOption("Save contacts to file", saveContacts()),
+                createOption("Add contact", addContact),
+                createOption("Search contact", searchContact),
+                createOption("Save contacts to file", saveContacts),
                 createOption("Exit", function () { rl.close() })
             ]
         },
@@ -93,7 +93,7 @@ function handleOption(option) {
     }
     
     // if options is valid, execute action attatched to option
-    state.getCurrentMenu().options[parseInt(option) - 1].action(parseInt(option) - 1);
+    state.getCurrentMenu().options[parseInt(option) - 1].action();
 }
 
 function isNumberBetween(number, min, max) {
