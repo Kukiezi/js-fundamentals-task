@@ -1,0 +1,13 @@
+Stwórz aplikację terminalową w środowisku Node. 
+Aplikacja to książka telefoniczna z podanymi funkcjonalnościami:
+1) Dodawanie kontaktów.
+2) Edytowanie kontaktów.
+3) Usuwanie kontaktów.
+4) Wyświetlanie listy kontaktów z zastosowaniem paginacji. Po 3 kontakty na stronę.
+5) Eksportowanie kontaktów do pliku json.
+6) Importowanie kontaktów z pliku json.
+
+Kontakt w książce telefonicznej składa się z 3 wymaganych pól:
+1) Imię
+2) Email
+3) Numer telefonu
